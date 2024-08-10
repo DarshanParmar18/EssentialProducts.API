@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using EssentialProducts.API.Validation;
+using System.ComponentModel.DataAnnotations;
 
 namespace EssentialProducts.API.ViewModel.Get
 {
-    public class ProductViewModel
+    public class ProductViewModel: AbstractValidatableObject
     {
         public int Id { get; set; }
 

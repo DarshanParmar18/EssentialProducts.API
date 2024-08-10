@@ -86,9 +86,7 @@ namespace EssentialProducts.API.Controllers
             var createdProduct = await productService.CreateProductAsync(entityToAdd);
             return new CreatedAtRouteResult("Get", new {id = createdProduct.Id});
 
-        }
-
-        //left off here and in video its 1:29:34 <----------------
+        } 
 
         // PUT api/<ProductController>/5
         [HttpPut("{id}",Name ="UpdateProduct")]
@@ -103,21 +101,19 @@ namespace EssentialProducts.API.Controllers
             {
                 return NotFound(); 
             }
-            var entityToUpdate = new Product()
-            {
-                Name = updateProduct.Name,
-                AvailableSince = updateProduct.AvailableSince,
-                CategoryId = updateProduct.CategoryId,
-                ModifiedDate = DateTime.Now,
-                ModifiedBy = "Admin",
-                Description = updateProduct.Description,
-                IsActive = updateProduct.IsActive,
-                Price = updateProduct.Price,
-            };
-            getProduct = entityToUpdate;
+
+            getProduct.Name = updateProduct.Name;
+            getProduct.AvailableSince = updateProduct.AvailableSince;
+            getProduct.CategoryId = updateProduct.CategoryId;
+            getProduct.ModifiedDate = DateTime.Now;
+            getProduct.ModifiedBy = "Admin";
+            getProduct.Description = updateProduct.Description;
+            getProduct.IsActive = updateProduct.IsActive;
+            getProduct.Price = updateProduct.Price;
+
             await productService.UpdateProductAsync(getProduct);
              
-            return Ok(getProduct);            
+            return Ok(updateProduct);            
         }
         
         // DELETE api/<ProductController>/5
